@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Breast Cancer Detection</title>
+    <link rel="stylesheet" href="/static/styles1.css">
+</head>
+<body>
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="/static/background-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="container">
+        <h1>Breast Cancer Detection</h1>
+        
+        {% if error_message %}
+            <p class="error-message">{{ error_message }}</p>
+        {% endif %}
+        
+        <form action="/predict" method="POST">
+            {% for feature in features %}
+                <label for="{{ feature }}">{{ feature }}:</label>
+                <input type="text" name="{{ feature }}"><br><br>
+            {% endfor %}
+            <input type="submit" value="Predict">
+        </form>
+    </div>
+</body>
+</html>
