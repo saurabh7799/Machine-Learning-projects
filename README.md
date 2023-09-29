@@ -3,4 +3,4 @@ Machine learning projects
 <br>
 House price prediction
 <br>
-Breast Cancer detection 
+Breast Cancer detection.
