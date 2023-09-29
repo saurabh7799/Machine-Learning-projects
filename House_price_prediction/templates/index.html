@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Price Prediction</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="/static/background-video.mp4" type="video/mp4">
+    </video>
+    <div class="content">
+        <h1>House Price Prediction</h1>
+        <form id="prediction-form">
+            <label for="location">Location:</label>
+            <select id="location" name="location">
+                {% for location in locations %}
+                <option value="{{ location }}">{{ location }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="sqft">Area (in sqft):</label>
+            <input type="number" id="sqft" name="sqft" required>
+            <br><br>
+            <label for="bath">Number of Bathrooms:</label>
+            <input type="number" id="bath" name="bath" required>
+            <br><br>
+            <label for="bhk">Number of Bedrooms:</label>
+            <input type="number" id="bhk" name="bhk" required>
+            <br><br>
+            <input type="submit" value="Predict">
+        </form>
+        <br><br>
+        <div id="prediction-result"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Handle form submission
+            $('#prediction-form').submit(function(event) {
+                event.preventDefault();
+
+                // Get form data
+                var formData = {
+                    'location': $('#location').val(),
+                    'sqft': $('#sqft').val(),
+                    'bath': $('#bath').val(),
+                    'bhk': $('#bhk').val()
+                };
+
+                // Send POST request to the server
+                $.ajax({
+                    type: 'POST',
+                    url: '/predict',
+                    data: JSON.stringify(formData),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function(response) {
+                        // Format the predicted price to two decimal places
+                        var formattedPrice = response.predicted_price.toFixed(2);
+
+                        // Display prediction result
+                        $('#prediction-result').text('Predicted Price: ' + formattedPrice);
+                    },
+                    error: function(error) {
+                        console.log(error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

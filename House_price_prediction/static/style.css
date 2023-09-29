@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  overflow: hidden;
+}
+
+#background-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 20px;
+  color: #000000;
+  text-align: center;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+form {
+  display: inline-block;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="number"],
+select {
+  padding: 5px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type="submit"] {
+  padding: 8px 16px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+#prediction-result {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+/* Additional styles for your form and result elements */
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 28px;
+  }
+}
