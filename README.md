@@ -1,6 +1,6 @@
 # Machine-Learning-projects
 Machine learning projects
-<b>
+<br>
 House price prediction
-<b>
+<br>
 Breast Cancer detection 
